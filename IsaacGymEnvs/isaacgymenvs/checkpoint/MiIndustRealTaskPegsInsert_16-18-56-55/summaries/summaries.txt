@@ -1,0 +1,9 @@
+#fps step: 7605 fps step and policy inference: 7417 fps total: 6658 epoch: 768/8192 frames: 50266112
+#fps step: 2168 fps step and policy inference: 2156 fps total: 2080 epoch: 769/8192 frames: 50331648
+#saving next best rewards:  [17651.61]
+#=> saving checkpoint 'runs/MiIndustRealTaskPegsInsert_16-18-56-55/nn/MiIndustRealTaskPegsInsert.pth'
+#fps step: 7830 fps step and policy inference: 7683 fps total: 6862 epoch: 770/8192 frames: 50397184
+#fps step: 2162 fps step and policy inference: 2148 fps total: 2072 epoch: 771/8192 frames: 50462720
+#fps
+#MiIndustRealTaskPegsInsert_16-18-56-55 rewards/step	17651.61328125 step 7677 7687
+#MiIndustRealTaskPegsInsert_16-18-56-55 insertion_successes/time	0.998046875

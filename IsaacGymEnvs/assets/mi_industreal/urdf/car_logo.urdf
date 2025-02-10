@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot name="car_logo">
+    <link name="car_logo">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="../mesh/car_hood_and_car_logo/car_logo.obj" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <!-- 0.013, -0.013, -0.016 -->
+            <geometry>
+                <mesh filename="../mesh/industreal_pegs/peg_left_top.obj"/>
+            </geometry>
+            <sdf resolution="256"/>
+        </collision>
+        <collision>
+            <!-- 0.013, -0.013, -0.016 -->
+            <geometry>
+                <mesh filename="../mesh/industreal_pegs/peg_right_bottom.obj"/>
+            </geometry>
+            <sdf resolution="256"/>
+        </collision>
+        <collision>
+            <!-- 立方体碰撞体 -->
+            <geometry>
+                <box size="0.07 0.07 0.005"/> <!-- 长宽高可调整 -->
+            </geometry>
+            <origin xyz="0 0 0.0022"/> <!-- 立方体中心位置 -->
+        </collision>
+        <inertial>
+            <mass value="0.1"/>
+            <inertia ixx="0.005" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005"/>
+        </inertial>
+    </link>
+</robot>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="car_hood">
+  <link
+    name="car_hood">
+    <inertial>
+      <origin
+        xyz="0 2.0817E-17 0.11047"
+        rpy="0 0 0" />
+      <mass
+        value="12.909" />
+      <inertia
+        ixx="0.090631"
+        ixy="-1.9324E-06"
+        ixz="-3.4549E-18"
+        iyy="0.15573"
+        iyz="2.06E-18"
+        izz="0.14127" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///root/PycharmProjects/isaacgyms/IsaacGymEnvs/assets/mi_industreal/urdf/../mesh/car_hood_and_car_logo/car_hood.obj" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+        <!-- 0.013, -0.013, -0.016 -->
+        <geometry>
+            <mesh filename="file:///root/PycharmProjects/isaacgyms/IsaacGymEnvs/assets/mi_industreal/urdf/../mesh/industreal_pegs/socket_left_top.obj"/>
+        </geometry>
+      <sdf resolution="256"/>
+    </collision>
+    <collision>
+        <!-- 0.013, -0.013, -0.016 -->
+        <geometry>
+            <mesh filename="file:///root/PycharmProjects/isaacgyms/IsaacGymEnvs/assets/mi_industreal/urdf/../mesh/industreal_pegs/socket_right_bottom.obj"/>
+        </geometry>
+      <sdf resolution="256"/>
+    </collision>
+    <collision>
+        <!-- 0.013, 0.013, -0.016 -->
+        <geometry>
+            <mesh filename="file:///root/PycharmProjects/isaacgyms/IsaacGymEnvs/assets/mi_industreal/urdf/../mesh/industreal_pegs/socket_left_bottom.obj"/>
+        </geometry>
+      <sdf resolution="256"/>
+    </collision>
+    <collision>
+        <!-- -0.013, -0.013, -0.016 -->
+        <geometry>
+            <mesh filename="file:///root/PycharmProjects/isaacgyms/IsaacGymEnvs/assets/mi_industreal/urdf/../mesh/industreal_pegs/socket_right_top.obj"/>
+        </geometry>
+      <sdf resolution="256"/>
+    </collision>
+  </link>
+
+</robot>

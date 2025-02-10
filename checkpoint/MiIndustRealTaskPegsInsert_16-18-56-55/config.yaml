@@ -1,0 +1,445 @@
+task:
+  mode:
+    export_scene: false
+    export_states: false
+  sim:
+    dt: 0.016667
+    substeps: 2
+    up_axis: z
+    use_gpu_pipeline: ${eq:${...pipeline},"gpu"}
+    gravity:
+    - 0.0
+    - 0.0
+    - -9.81
+    add_damping: true
+    disable_franka_collisions: false
+    physx:
+      solver_type: ${....solver_type}
+      num_threads: ${....num_threads}
+      num_subscenes: ${....num_subscenes}
+      use_gpu: ${contains:"cuda",${....sim_device}}
+      num_position_iterations: 16
+      num_velocity_iterations: 0
+      contact_offset: 0.01
+      rest_offset: 0.0
+      bounce_threshold_velocity: 0.2
+      max_depenetration_velocity: 5.0
+      friction_offset_threshold: 0.01
+      friction_correlation_distance: 0.00625
+      max_gpu_contact_pairs: 6553600
+      default_buffer_size_multiplier: 8.0
+      contact_collection: 1
+  env:
+    env_spacing: 1.0
+    franka_depth: 0.4
+    table_height: 1.04
+    franka_friction: 4.0
+    table_friction: 0.3
+    numEnvs: ${resolve_default:128,${...num_envs}}
+    numObservations: 24
+    numStates: 47
+    numActions: 6
+    socket_base_height: 0.003
+    num_gripper_move_sim_steps: 120
+    num_gripper_close_sim_steps: 60
+    socket_pos_obs_noise:
+    - 0.001
+    - 0.001
+    - 0.0
+    socket_rot_obs_noise:
+    - 0.0
+    - 0.0
+    - 0.0
+  name: MiIndustRealTaskPegsInsert
+  physics_engine: ${..physics_engine}
+  randomize:
+    franka_arm_initial_dof_pos:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.57
+    - 0.0
+    - 1.57
+    - 1.57
+    fingertip_centered_pos_initial:
+    - 0.0
+    - 0.0
+    - 0.2
+    fingertip_centered_pos_noise:
+    - 0.0
+    - 0.0
+    - 0.0
+    fingertip_centered_rot_initial:
+    - 3.141593
+    - 0.0
+    - 1.5707965
+    fingertip_centered_rot_noise:
+    - 0.0
+    - 0.0
+    - 0.0
+    socket_pos_xy_initial:
+    - 0.4
+    - 0.0
+    socket_pos_xy_noise:
+    - 0.05
+    - 0.05
+    socket_pos_z_noise_bounds:
+    - 0.05
+    - 0.07
+    socket_rot_noise:
+    - 0.0
+    - 0.0
+    - 0.0872665
+    plug_pos_xy_noise:
+    - 0.01
+    - 0.01
+    plug_pos_xyz_initial:
+    - -0.18279
+    - 0.0
+    - 1.225
+  rl:
+    pos_action_scale:
+    - 0.01
+    - 0.01
+    - 0.01
+    rot_action_scale:
+    - 0.01
+    - 0.01
+    - 0.01
+    force_action_scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    torque_action_scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    unidirectional_rot: true
+    unidirectional_force: false
+    clamp_rot: true
+    clamp_rot_thresh: 1.0e-06
+    num_keypoints: 6
+    keypoint_scale: 0.5
+    max_episode_length: 256
+    interpen_thresh: 0.001
+    sdf_reward_scale: 10.0
+    sdf_reward_num_samples: 1000
+    initial_max_disp: 0.01
+    curriculum_success_thresh: 0.75
+    curriculum_failure_thresh: 0.5
+    curriculum_height_step:
+    - -0.005
+    - 0.003
+    curriculum_height_bound:
+    - -0.01
+    - 0.01
+    close_error_thresh: 0.15
+    success_height_thresh: 0.003
+    engagement_bonus: 10.0
+  ctrl:
+    ctrl_type: task_space_impedance
+    all:
+      jacobian_type: geometric
+      gripper_prop_gains:
+      - 500
+      - 500
+      gripper_deriv_gains:
+      - 2
+      - 2
+    gym_default:
+      ik_method: dls
+      joint_prop_gains:
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      joint_deriv_gains:
+      - 8
+      - 8
+      - 8
+      - 8
+      - 8
+      - 8
+      - 8
+      gripper_prop_gains:
+      - 500
+      - 500
+      gripper_deriv_gains:
+      - 20
+      - 20
+    joint_space_ik:
+      ik_method: dls
+      joint_prop_gains:
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      joint_deriv_gains:
+      - 0.1
+      - 0.1
+      - 0.1
+      - 0.1
+      - 0.1
+      - 0.1
+      - 0.1
+    joint_space_id:
+      ik_method: dls
+      joint_prop_gains:
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      joint_deriv_gains:
+      - 8
+      - 8
+      - 8
+      - 8
+      - 8
+      - 8
+      - 8
+    task_space_impedance:
+      motion_ctrl_axes:
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      task_prop_gains:
+      - 300
+      - 300
+      - 300
+      - 50
+      - 50
+      - 50
+      task_deriv_gains:
+      - 34
+      - 34
+      - 34
+      - 1.4
+      - 1.4
+      - 1.4
+    operational_space_motion:
+      motion_ctrl_axes:
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      task_prop_gains:
+      - 60
+      - 60
+      - 60
+      - 5
+      - 5
+      - 5
+      task_deriv_gains:
+      - 15.5
+      - 15.5
+      - 15.5
+      - 4.5
+      - 4.5
+      - 4.5
+    open_loop_force:
+      force_ctrl_axes:
+      - 0
+      - 0
+      - 1
+      - 0
+      - 0
+      - 0
+    closed_loop_force:
+      force_ctrl_axes:
+      - 0
+      - 0
+      - 1
+      - 0
+      - 0
+      - 0
+      wrench_prop_gains:
+      - 0.1
+      - 0.1
+      - 0.1
+      - 0.1
+      - 0.1
+      - 0.1
+    hybrid_force_motion:
+      motion_ctrl_axes:
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      task_prop_gains:
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      - 40
+      task_deriv_gains:
+      - 8
+      - 8
+      - 8
+      - 8
+      - 8
+      - 8
+      force_ctrl_axes:
+      - 0
+      - 0
+      - 1
+      - 0
+      - 0
+      - 0
+      wrench_prop_gains:
+      - 0.1
+      - 0.1
+      - 0.1
+      - 0.1
+      - 0.1
+      - 0.1
+train:
+  params:
+    seed: ${...seed}
+    algo:
+      name: a2c_continuous
+    model:
+      name: continuous_a2c_logstd
+    network:
+      name: actor_critic
+      separate: false
+      space:
+        continuous:
+          mu_activation: None
+          sigma_activation: None
+          mu_init:
+            name: default
+          sigma_init:
+            name: const_initializer
+            val: 0
+          fixed_sigma: true
+      mlp:
+        units:
+        - 512
+        - 256
+        - 128
+        activation: elu
+        d2rl: false
+        initializer:
+          name: default
+        regularizer:
+          name: None
+      rnn:
+        name: lstm
+        units: 256
+        layers: 2
+        before_mlp: true
+        concat_input: true
+        layer_norm: false
+    load_checkpoint: ${if:${...checkpoint},True,False}
+    load_path: ${...checkpoint}
+    config:
+      name: ${resolve_default:MiIndustRealTaskPegsInsert,${....experiment}}
+      full_experiment_name: ${.name}
+      env_name: rlgpu
+      multi_gpu: false
+      ppo: true
+      mixed_precision: true
+      normalize_input: true
+      normalize_value: true
+      value_bootstrap: true
+      num_actors: ${....task.env.numEnvs}
+      reward_shaper:
+        scale_value: 1.0
+      normalize_advantage: true
+      gamma: 0.998
+      tau: 0.95
+      learning_rate: 0.001
+      lr_schedule: linear
+      schedule_type: standard
+      kl_threshold: 0.016
+      score_to_win: 200000
+      # max_epochs: ${resolve_default:8192,${....max_iterations}}
+      max_epochs: 1
+      save_best_after: 10
+      save_frequency: 100
+      print_stats: true
+      grad_norm: 1.0
+      entropy_coef: 0.0
+      truncate_grads: false
+      e_clip: 0.2
+      horizon_length: 128
+      minibatch_size: 8192
+      mini_epochs: 8
+      critic_coef: 2
+      clip_value: true
+      seq_len: 8
+      bounds_loss_coef: 0.0001
+      central_value_config:
+        minibatch_size: 256
+        mini_epochs: 4
+        learning_rate: 0.001
+        lr_schedule: linear
+        kl_threshold: 0.016
+        clip_value: true
+        normalize_input: true
+        truncate_grads: true
+        network:
+          name: actor_critic
+          central_value: true
+          mlp:
+            units:
+            - 256
+            - 128
+            - 64
+            activation: elu
+            d2rl: false
+            initializer:
+              name: default
+            regularizer:
+              name: None
+pbt:
+  enabled: false
+task_name: ${task.name}
+experiment: ''
+num_envs: 512
+seed: 42
+torch_deterministic: false
+max_iterations: ''
+physics_engine: physx
+pipeline: gpu
+sim_device: cuda:0
+rl_device: cuda:0
+graphics_device_id: 0
+num_threads: 4
+solver_type: 1
+num_subscenes: 4
+test: false
+checkpoint: ''
+sigma: ''
+multi_gpu: false
+wandb_activate: true
+wandb_group: ''
+wandb_name: ${train.params.config.name}
+wandb_entity: godhudad-google
+wandb_project: isaacgymenvs
+wandb_tags: []
+wandb_logcode_dir: ''
+capture_video: false
+capture_video_freq: 1464
+capture_video_len: 100
+force_render: true
+headless: true
+
+
