@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="DH_claw_v1">
+  <link
+    name="DH_base_link">
+    <inertial>
+      <origin
+        xyz="-0.00214226690743326 -2.89869288661315E-05 0.0397576644246484"
+        rpy="0 0 0" />
+      <mass
+        value="0.228191114194274" />
+      <inertia
+        ixx="9.9852872427343E-05"
+        ixy="-1.34581010252825E-09"
+        ixz="3.45577439945333E-11"
+        iyy="8.6467475262219E-05"
+        iyz="-1.40654950640297E-07"
+        izz="0.000100429586347905" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DH_claw_v1/meshes/DH_base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DH_claw_v1/meshes/DH_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="DH_finger1_link">
+    <inertial>
+      <origin
+        xyz="-0.0209955380836605 -0.00304958301979076 0.01313587597688"
+        rpy="0 0 0" />
+      <mass
+        value="0.0150706853916216" />
+      <inertia
+        ixx="2.70094806996997E-06"
+        ixy="-2.0570643241293E-07"
+        ixz="-1.36149596199308E-06"
+        iyy="4.56944361238611E-06"
+        iyz="-1.51760830728483E-07"
+        izz="2.39616088159809E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DH_claw_v1/meshes/DH_finger1_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.0005 0 0.0375"
+        rpy="0 0 0" />
+      <geometry>
+        <!-- <mesh
+          filename="package://DH_claw_v1/meshes/DH_finger1_link.STL" /> -->
+        <box size="0.01 0.025 0.04"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="DH_finger1_prismatic"
+    type="prismatic">
+    <origin
+      xyz="-0.0021423 0.035336 0.0915"
+      rpy="0 0 1.5708" />
+    <parent
+      link="DH_base_link" />
+    <child
+      link="DH_finger1_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0.031"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="DH_finger2_link">
+    <inertial>
+      <origin
+        xyz="-0.0209955380836608 -0.00325958301979083 0.0132558759768799"
+        rpy="0 0 0" />
+      <mass
+        value="0.0150706853916218" />
+      <inertia
+        ixx="2.70094806997E-06"
+        ixy="-2.05706432412959E-07"
+        ixz="-1.36149596199312E-06"
+        iyy="4.5694436123862E-06"
+        iyz="-1.51760830728494E-07"
+        izz="2.39616088159818E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://DH_claw_v1/meshes/DH_finger2_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.0005 0 0.0375"
+        rpy="0 0 0" />
+      <geometry>
+        <!-- <mesh
+          filename="package://DH_claw_v1/meshes/DH_finger2_link.STL" /> -->
+        <box size="0.01 0.025 0.04"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="DH_finger2_prismatic"
+    type="prismatic">
+    <origin
+      xyz="-0.0021423 -0.035193 0.0915"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="DH_base_link" />
+    <child
+      link="DH_finger2_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0.031"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>
