@@ -2,7 +2,7 @@
 
 ## 2025.2.18进度：
 
-<img src="./src_video/chebiao_v1.png" alt="chebiao_v1" style="zoom:50%;" />
+实现了夹爪的替换，能够抓取+插车标
 
 ## 2025.2.17进度:
 
