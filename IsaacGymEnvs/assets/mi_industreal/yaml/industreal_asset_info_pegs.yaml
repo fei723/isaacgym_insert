@@ -147,6 +147,7 @@ car_hood_and_car_logo:
         density: 8000.0
         friction: 1.0
         grasp_offset: 0.004
+        # 上下的位移偏移
         plug_width: 0.016
     car_hood:
         urdf_path: 'car_hood'

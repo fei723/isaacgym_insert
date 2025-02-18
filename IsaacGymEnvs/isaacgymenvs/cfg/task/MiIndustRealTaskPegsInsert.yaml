@@ -39,7 +39,7 @@ randomize:
     socket_rot_noise: [0.0, 0.0, 0.0]
     # plug_pos_xy_noise: [0.01, 0.01]  # noise on plug position
     plug_pos_xy_noise: [0.0, 0.0]
-    plug_pos_xyz_initial: [-0.18279, 0.0, 1.225]  # initial position of plug on world
+    plug_pos_xyz_initial: [-0.18279, 0.0, 1.15]  # initial position of plug on world
 
 rl:
     pos_action_scale: [0.01, 0.01, 0.01]

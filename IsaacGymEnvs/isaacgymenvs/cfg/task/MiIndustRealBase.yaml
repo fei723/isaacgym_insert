@@ -37,7 +37,8 @@ sim:
     
 env:
     env_spacing: 1.0
-    franka_depth: 0.40  # Franka origin 37 cm behind table midpoint
+    franka_depth: 0.5  # Franka origin 37 cm behind table midpoint
+    #要改一下
     table_height: 1.04
     franka_friction: 4.0
     table_friction: 0.3

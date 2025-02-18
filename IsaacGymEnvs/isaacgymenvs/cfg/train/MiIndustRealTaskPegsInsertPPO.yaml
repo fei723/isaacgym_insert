@@ -111,4 +111,4 @@ params:
         #   layer_norm: False
 
     player:
-      games_num: 2
+      games_num: 3

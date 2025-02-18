@@ -9,6 +9,7 @@ num_envs: 1
 
 # seed - set to -1 to choose random seed
 seed: -1
+#随机种子，随机的初始位置
 # set to True for deterministic performance
 torch_deterministic: False
 
@@ -70,6 +71,3 @@ hydra:
   output_subdir: null
   run:
     dir: .
-
-joint_angle_log:
-  save_freq: 256 # 保存频率（步数）
