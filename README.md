@@ -2,7 +2,7 @@
 
 ## 2025.2.18进度：
 
-![chebiao_v1](./src_video/chebiao_v1.png)
+<img src="./src_video/chebiao_v1.png" alt="chebiao_v1" style="zoom:50%;" />
 
 ## 2025.2.17进度:
 
