@@ -106,7 +106,7 @@ class MiIndustRealBase(FactoryBase, FactoryABCBase):
             os.path.dirname(__file__), "..", "..", "..", "assets", "mi_industreal", "urdf"
         )
 
-        franka_file = "industreal_realman_v1.urdf"
+        franka_file = "industreal_realman_v2.urdf"
 
         franka_options = gymapi.AssetOptions()
         franka_options.flip_visual_attachments = False

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="arm">
+  <link
+    name="panda_hand">
+    <inertial>
+      <origin
+        xyz="-2.89869288657985E-05 0.00214226690743325 0.0397576644246482"
+        rpy="0 0 0" />
+      <mass
+        value="0.228191114194277" />
+      <inertia
+        ixx="8.6467475262219E-05"
+        ixy="1.34581010252346E-09"
+        ixz="-1.40654950640297E-07"
+        iyy="9.9852872427343E-05"
+        iyz="-3.4557743994811E-11"
+        izz="0.000100429586347905" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm/meshes/panda_hand.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm/meshes/panda_hand.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="panda_leftfinger">
+    <inertial>
+      <origin
+        xyz="-0.0235377497191109 -0.00304958301979075 0.01313587597688"
+        rpy="0 0 0" />
+      <mass
+        value="0.0150706853916216" />
+      <inertia
+        ixx="2.70094806996996E-06"
+        ixy="-2.05706432412929E-07"
+        ixz="-1.36149596199308E-06"
+        iyy="4.56944361238609E-06"
+        iyz="-1.51760830728482E-07"
+        izz="2.39616088159809E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm/meshes/panda_leftfinger.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm/meshes/panda_leftfinger.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="panda_finger_joint1"
+    type="prismatic">
+    <origin
+      xyz="0.037878 0.0021423 0.0915"
+      rpy="0 0 0" />
+    <parent
+      link="panda_hand" />
+    <child
+      link="panda_leftfinger" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0.031"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="panda_rightfinger">
+    <inertial>
+      <origin
+        xyz="0.0235377497191112 0.00325958301979083 0.0132558759768799"
+        rpy="0 0 0" />
+      <mass
+        value="0.0150706853916218" />
+      <inertia
+        ixx="2.70094806997E-06"
+        ixy="-2.05706432412959E-07"
+        ixz="1.36149596199312E-06"
+        iyy="4.5694436123862E-06"
+        iyz="1.51760830728494E-07"
+        izz="2.39616088159818E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm/meshes/panda_rightfinger.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm/meshes/panda_rightfinger.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="panda_finger_joint2"
+    type="prismatic">
+    <origin
+      xyz="-0.037735 0.0021423 0.0915"
+      rpy="0 0 0" />
+    <parent
+      link="panda_hand" />
+    <child
+      link="panda_rightfinger" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0.031"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>
