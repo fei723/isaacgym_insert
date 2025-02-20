@@ -535,6 +535,9 @@ class MiIndustRealTaskPegsInsert(MiIndustRealEnvPegs, FactoryABCTask):
         )
         self.close_gripper(sim_steps=self.cfg_task.env.num_gripper_close_sim_steps)
         self.enable_gravity()
+        self._move_gripper_to_grasp_above_pose(
+            sim_steps=self.cfg_task.env.num_gripper_close_sim_steps
+        )
         self._move_gripper_to_pre_insert_pose(
             sim_steps=self.cfg_task.env.num_gripper_move_sim_steps
         )
@@ -804,6 +807,17 @@ class MiIndustRealTaskPegsInsert(MiIndustRealEnvPegs, FactoryABCTask):
         # Reset plug in case it is knocked away by gripper movement
         self._reset_plug(before_move_to_grasp=False)
 
+    def _move_gripper_to_grasp_above_pose(self, sim_steps):
+        """Define grasp pose for plug and move gripper to pose."""
+
+        # Set target_pos
+        self.ctrl_target_fingertip_midpoint_pos
+        self.ctrl_target_fingertip_midpoint_pos[:, 2] += 0.05
+        self.move_gripper_to_target_pose(
+            gripper_dof_pos=0.0,
+            sim_steps=sim_steps,
+        )
+
     def _move_gripper_to_pre_insert_pose(self, sim_steps):
         """Define grasp pose for plug and move gripper to pose."""
 
@@ -888,4 +902,3 @@ class MiIndustRealTaskPegsInsert(MiIndustRealEnvPegs, FactoryABCTask):
             gripper_dof_pos=self.asset_info_franka_table.franka_gripper_width_max,
             sim_steps=sim_steps,
         )
-
