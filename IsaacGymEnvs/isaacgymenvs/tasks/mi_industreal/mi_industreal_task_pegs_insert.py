@@ -508,7 +508,9 @@ class MiIndustRealTaskPegsInsert(MiIndustRealEnvPegs, FactoryABCTask):
             #     curr_max_disp=self.curr_max_disp,
             # )
             self._move_gripper_up(int(self.cfg_task.env.num_gripper_move_sim_steps * 1.5))
-
+            self.end_time = time.time()
+            elapsed_time = self.end_time - self.start_time
+            print(f"单次仿真时间：{elapsed_time:.6f} 秒")
             self.save_arm_dof_pos_file()
 
     def _update_reset_buf(self):
@@ -522,7 +524,7 @@ class MiIndustRealTaskPegsInsert(MiIndustRealEnvPegs, FactoryABCTask):
 
     def reset_idx(self, env_ids):
         """Reset specified environments."""
-
+        self.start_time = time.time()
         self._reset_franka()
 
         # Close gripper onto plug
